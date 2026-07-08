@@ -1,0 +1,416 @@
+/* =========================================
+   1. VARIÁVEIS DE CORES (Paleta do Sistema)
+   ========================================= */
+:root {
+  --bg-main: #020617;        /* Fundo principal (azul bem escuro) */
+  --bg-sidebar: #0f172a;     /* Fundo da barra lateral */
+  --bg-card: #0f172a;        /* Fundo dos cartões */
+  --bg-card-hover: #1e293b;  /* Cor do cartão ao passar o mouse */
+  --text-main: #f8fafc;      /* Texto principal (quase branco) */
+  --text-muted: #94a3b8;     /* Texto secundário (cinza) */
+  --accent: #06b6d4;         /* Azul ciano (cor de destaque) */
+  --danger: #ef4444;         /* Vermelho (para alertas/ao vivo) */
+  --success: #10b981;        /* Verde (para sucesso/finalizado) */
+  --border: #1e293b;         /* Cor das linhas de borda */
+}
+
+/* =========================================
+   2. CONFIGURAÇÕES GERAIS
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* =========================================
+   3. MENU LATERAL (SIDEBAR)
+   ========================================= */
+.sidebar {
+  width: 260px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+}
+
+.logo-icon {
+  background-color: var(--accent);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.nav-menu {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  padding-left: 8px;
+  font-weight: bold;
+}
+
+/* Botões do menu */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: var(--text-muted);
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+}
+
+.nav-item.active {
+  background-color: var(--accent);
+  color: #000;
+}
+
+.nav-icon {
+  font-size: 18px;
+}
+
+/* Perfil no final do menu */
+.user-profile {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  background-color: #164e63;
+  color: var(--accent);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* =========================================
+   4. CONTEÚDO PRINCIPAL E CABEÇALHOS
+   ========================================= */
+.main-content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.header h2 {
+  font-size: 28px;
+  margin-top: 4px;
+}
+
+.top-bar {
+  display: flex;
+  gap: 16px;
+}
+
+/* Badge de "Sistema Online" */
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--danger);
+  border-radius: 50%;
+}
+
+/* =========================================
+   5. CARDS DE ESTATÍSTICAS (Dashboard)
+   ========================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.emoji-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.stat-card h3 {
+  font-size: 36px;
+  margin: 12px 0 4px 0;
+}
+
+.stat-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* =========================================
+   6. TABELAS (Atletas, Resultados, Provas)
+   ========================================= */
+.table-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.table-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 16px 24px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: normal;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #1e293b80;
+}
+
+/* =========================================
+   7. BOTÕES E INPUTS
+   ========================================= */
+.btn-action {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-action:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #0891b2;
+}
+
+.input-field {
+  background-color: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 10px 16px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-field:focus {
+  border-color: var(--accent);
+}
+
+/* =========================================
+   8. TELA DE CRONOMETRAGEM E PÓDIO
+   ========================================= */
+.lanes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lane-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.lane-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-muted);
+  width: 40px;
+  text-align: center;
+}
+
+.lane-info {
+  flex: 1;
+}
+
+.stopwatch-display {
+  font-size: 48px;
+  font-weight: bold;
+  font-family: monospace;
+  text-align: center;
+  letter-spacing: 4px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+/* Posições do Pódio */
+.podium-pos {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.pos-1 { background-color: #fbbf24; color: #000; } /* Ouro */
+.pos-2 { background-color: #94a3b8; color: #000; } /* Prata */
+.pos-3 { background-color: #b45309; color: #fff; } /* Bronze */
+
+
+/*body{
+
+background:#edf6ff;
+font-family:Arial;
+margin:30px;
+
+}
+
+header{
+
+text-align:center;
+margin-bottom:30px;
+
+}
+
+form{
+
+display:flex;
+gap:10px;
+margin-bottom:30px;
+
+}
+
+input{
+
+padding:10px;
+
+}
+
+button{
+
+padding:10px 20px;
+cursor:pointer;
+
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+td,th{
+
+border:1px solid #ccc;
+padding:10px;
+
+}
+
+th{
+
+background:#1d9bf0;
+color:white;
+
+}
+
+h2{
+
+color:#1d9bf0;
+
+} */
